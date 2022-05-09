@@ -12,3 +12,18 @@ exportImg = cv2.imwrite('filtredImages/filtredimage1.jpg', test)
 cv2.imshow("nome_da_janela", test)
 
 cv2.waitKey(0)
+
+img = Image.open('filtredImages/filtredimage1.jpg')
+numpydata = np.asarray(img)
+colorGreen = 0
+total = 0
+
+for line in numpydata:
+    for column in line:
+        Red = column[0]
+        Green = column[1]
+        Blue = column[2]
+        if Green > Red and Green > Blue:
+            colorGreen = colorGreen +1
+        total = total + 1
+print(colorGreen/total)
