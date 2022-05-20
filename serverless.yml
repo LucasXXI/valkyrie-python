@@ -1,0 +1,22 @@
+service: valkyrie-images
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.6
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /image
+          method: get
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+
+plugins:
+  - serverless-python-requirements
